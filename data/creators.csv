@@ -1,0 +1,7 @@
+creator_id,creator_name,platform,country,niche,followers,engagement_rate,audience_fit,response_status,days_since_last_action,campaign_stage,shipping_status,deadline_days_left,brand_safety_risk
+cr_001,MarieSkinLab,Instagram,France,Skincare,85000,4.8,92,No reply,3,Form Sent,Not shipped,10,Low
+cr_002,GlowWithEmma,TikTok,France,Beauty Lifestyle,120000,3.2,80,Replied,1,Shortlisted,Pending,6,Medium
+cr_003,KBeautyLina,Instagram,France,K-beauty,54000,5.6,88,No reply,5,Form Sent,Not shipped,8,Low
+cr_004,ParisDailyStyle,Instagram,France,Lifestyle,210000,1.9,62,Replied,4,Draft Requested,Delivered,2,Medium
+cr_005,RoutineAvecCamille,Instagram,France,Skincare Routine,68000,4.1,84,Replied,2,Product Shipped,In transit,5,Low
+cr_006,BeautyDataNora,YouTube,France,Beauty Review,43000,6.2,90,Replied,1,Published,Delivered,0,Low
