@@ -292,7 +292,7 @@ campaign_brief = {
 # --------------------------------------------------
 # Arrow to Step 2
 # --------------------------------------------------
-render_step_arrow("Campaign Health")
+render_step_arrow("Campaign Health check")
 
 
 # --------------------------------------------------
@@ -300,7 +300,7 @@ render_step_arrow("Campaign Health")
 # --------------------------------------------------
 render_step_card(
     2,
-    "Campaign Health",
+    "Campaign Health check",
     "Track creator progress from form sent to publication, and identify where the campaign may be slowing down.",
 )
 

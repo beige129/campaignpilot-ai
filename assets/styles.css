@@ -472,27 +472,36 @@ div[data-testid="stButton"] > button[kind="primary"]:hover {
 
 
 /*=====================
-/* Pretty tables */
+/* -----------------------------
+Pretty HTML tables with horizontal scroll
+----------------------------- */
+
 .table-card {
   width: 100%;
+  max-width: 100%;
   margin: 0.8rem auto 1.25rem auto;
   border-radius: 24px;
-  overflow-x: auto;
   background:
     linear-gradient(135deg, rgba(255, 252, 238, 0.92), rgba(255, 255, 255, 0.66));
   border: 1px solid rgba(255, 255, 255, 0.84);
   box-shadow: var(--shadow-md);
+
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  -webkit-overflow-scrolling: touch;
 }
 
 .table-card::before {
   content: "";
   display: block;
   height: 7px;
+  min-width: 1500px;
   background: linear-gradient(90deg, var(--rose), var(--purple), var(--blue), var(--teal));
 }
 
 .pretty-table {
-  width: 100%;
+  width: max-content !important;
+  min-width: 1500px !important;
   border-collapse: collapse;
   border-spacing: 0;
   font-size: 0.82rem;
@@ -505,18 +514,20 @@ div[data-testid="stButton"] > button[kind="primary"]:hover {
   color: #FFF7E0;
   font-weight: 900;
   text-align: center;
-  padding: 0.9rem 0.8rem;
+  padding: 0.9rem 0.9rem;
   white-space: nowrap;
   border-bottom: 1px solid rgba(255,255,255,0.10);
+  min-width: 120px;
 }
 
 .pretty-table tbody td {
-  padding: 0.85rem 0.8rem;
+  padding: 0.85rem 0.9rem;
   text-align: center;
   font-weight: 650;
   color: var(--text);
   border-bottom: 1px solid rgba(80, 74, 98, 0.08);
   white-space: nowrap;
+  min-width: 120px;
 }
 
 .pretty-table tbody tr:nth-child(even) {
@@ -526,6 +537,49 @@ div[data-testid="stButton"] > button[kind="primary"]:hover {
 .pretty-table tbody tr:hover {
   background: rgba(154, 121, 255, 0.10);
 }
+
+/* Keep first column visible while scrolling */
+.pretty-table th:first-child,
+.pretty-table td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  min-width: 150px;
+  box-shadow: 8px 0 18px rgba(68, 56, 98, 0.08);
+}
+
+.pretty-table th:first-child {
+  background:
+    linear-gradient(135deg, rgba(40, 36, 51, 1), rgba(53, 43, 88, 1));
+  color: #FFF7E0;
+}
+
+.pretty-table td:first-child {
+  background: rgba(255, 252, 238, 0.98);
+  color: var(--dark);
+  font-weight: 900;
+}
+
+/* Horizontal scrollbar styling */
+.table-card::-webkit-scrollbar {
+  height: 12px;
+}
+
+.table-card::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+}
+
+.table-card::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, var(--purple), var(--blue));
+  border-radius: 999px;
+}
+
+.table-card::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, var(--rose), var(--purple));
+}
+
+
 
 /* Text area */
 div[data-testid="stTextArea"] textarea {
@@ -773,4 +827,59 @@ button[data-testid="stBaseButton-primary"]:active {
   button[data-testid="stBaseButton-primary"] span {
     font-size: 1.45rem !important;
   }
+}
+
+
+/* =================================================
+FORCE VISIBLE HORIZONTAL SCROLLBAR FOR TABLES
+Put this at the very bottom of styles.css
+================================================= */
+
+.table-card {
+  overflow-x: scroll !important;
+  overflow-y: hidden !important;
+  scrollbar-gutter: stable both-edges !important;
+  padding-bottom: 14px !important;
+}
+
+/* Chrome / Edge / Safari */
+.table-card::-webkit-scrollbar {
+  height: 16px !important;
+  display: block !important;
+  background: rgba(255, 255, 255, 0.65) !important;
+}
+
+.table-card::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.72) !important;
+  border-radius: 999px !important;
+  margin: 0 18px !important;
+  border: 1px solid rgba(80, 74, 98, 0.12) !important;
+}
+
+.table-card::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #9A79FF, #536DFF) !important;
+  border-radius: 999px !important;
+  border: 3px solid rgba(255, 255, 255, 0.72) !important;
+}
+
+.table-card::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #FF8FB3, #9A79FF) !important;
+}
+
+/* Firefox */
+.table-card {
+  scrollbar-width: auto !important;
+  scrollbar-color: #9A79FF rgba(255, 255, 255, 0.72) !important;
+}
+
+/* Add a small permanent visual hint below wide tables */
+.table-card::after {
+  content: "← Scroll horizontally to view all columns →";
+  display: block;
+  padding: 0.55rem 0 0.15rem 0;
+  text-align: center;
+  color: #68657A;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
 }
